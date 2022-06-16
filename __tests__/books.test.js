@@ -20,11 +20,23 @@ describe('books routes testing', () => {
     expect(results.body.title).toEqual('The Monster at the end of this book');
   });
 
-  it('should insert a new book into our table', async () => {
+  it.skip('should insert a new book into our table', async () => {
     const book = new Book({ title: 'Goodnight Moon', released: 1947 });
     const results = await request(app).post('/books/:id').send(book);
     expect(results.status).toEqual(200);
     expect(results.body.title).toEqual('Goodnight Moon');
+  });
+
+  it('PUT /books/:id should update book with id', async () => {
+    const results = await request(app).put('/books/1').send({
+      title:
+        'The Monster at the End of This Book: Starring Lovable, Furry Old Grover',
+    });
+    console.log(results.body);
+    expect(results.status).toEqual(200);
+    expect(results.body.title).toEqual(
+      'The Monster at the End of This Book: Starring Lovable, Furry Old Grover'
+    );
   });
 
   afterAll(() => {
