@@ -27,7 +27,7 @@ describe('books routes testing', () => {
     expect(results.body.title).toEqual('Goodnight Moon');
   });
 
-  it('PUT /books/:id should update book with id', async () => {
+  it.skip('PUT /books/:id should update book with id', async () => {
     const results = await request(app).put('/books/1').send({
       title:
         'The Monster at the End of This Book: Starring Lovable, Furry Old Grover',
@@ -37,6 +37,11 @@ describe('books routes testing', () => {
     expect(results.body.title).toEqual(
       'The Monster at the End of This Book: Starring Lovable, Furry Old Grover'
     );
+  });
+
+  it('DELETE /books/:id should delete the book with the matching ID', async () => {
+    const results = await request(app).delete('/books/1');
+    expect(results.status).toEqual(200);
   });
 
   afterAll(() => {
