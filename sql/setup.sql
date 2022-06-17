@@ -1,10 +1,14 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP table if exists cats;
+DROP TABLE IF EXISTS quotes;
+DROP TABLE IF EXISTS episodes;
 DROP TABLE IF EXISTS authors_books;
 DROP TABLE IF EXISTS books;
 DROP TABLE IF EXISTS authors;
 DROP table if exists friends;
+DROP TABLE IF EXISTS characters;
+
 
 CREATE TABLE books (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -75,3 +79,23 @@ INSERT INTO cats (name, type, URL, year, lives, is_sidekick) VALUES
 ('Tigger', 'Tiger', 'https://www.pinclipart.com/picdir/big/150-1504133_tigger-tigger-cartoon-me-clipart-png-image-download.png',1928, 8, false),
 ('Hello Kitty', 'Angora', 'https://cdn.shopify.com/s/files/1/0054/4371/5170/products/FiGPiN_360HelloKittySANRIOPIN.png?v=1627413934',1974, 9, false),
 ('Hobbes', 'Tiger', 'https://sketchok.com/images/articles/01-cartoons/000-va/102/10.jpg', 1985, 6, true); 
+
+CREATE TABLE characters (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  first_name VARCHAR,
+  last_name VARCHAR
+);
+
+INSERT INTO characters (
+  first_name,
+  last_name
+)
+VALUES 
+  ('Moira', 'Rose'),
+  ('Johnny','Rose'),
+  ('David','Rose'),
+  ('Alexis','Rose'),
+  ('Stevie','Budd'),
+  ('Roland','Schitt'),
+  ('Jocelyn', 'Schitt')
+;
