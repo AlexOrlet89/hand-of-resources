@@ -35,7 +35,7 @@ describe('cats routes testing', () => {
     expect(results.body.year).toEqual(2017);
   });
 
-  it('PUT /cats/:id should update cat with id', async () => {
+  it.skip('PUT /cats/:id should update cat with id', async () => {
     const results = await request(app).put('/cats/1').send({
       name: 'Felix da Housecat',
     });
@@ -45,9 +45,15 @@ describe('cats routes testing', () => {
     expect(results.body.type).toEqual('Tuxedo');
   });
 
-  it.skip('DELETE /cats/:id should delete the cat with the matching ID', async () => {
-    const results = await request(app).delete('/cats/1');
-    expect(results.status).toEqual(200);
+  it('DELETE /cats/:id should delete the cat with the matching ID', async () => {
+    const deletedCat = await request(app).delete('/cats/2');
+    // console.log(results.body); returns garfield
+    expect(deletedCat.body.name).toEqual('Garfield');
+    const results = await request(app).get('/cats/2');
+
+    // console.log(results.body);returns 500
+    expect(results.status).toEqual(500);
+    // expect(results.body.name).toEqual(null);
   });
 
   afterAll(() => {
