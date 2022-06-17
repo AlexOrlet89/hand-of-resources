@@ -11,12 +11,12 @@ describe('authors routes testing', () => {
   it('should return a list of authors', async () => {
     const results = await request(app).get('/authors');
     expect(results.status).toEqual(200);
-    expect(results.body.length).toEqual(4);
+    expect(results.body.length).toEqual(3);
   });
 
   it('should return a single author based on the id params', async () => {
     const results = await request(app).get('/authors/1');
-    expect(results.body.name).toEqual('The Monster at the end of this author');
+    expect(results.body.name).toEqual('Eric Hill');
   });
 
   afterAll(() => {
