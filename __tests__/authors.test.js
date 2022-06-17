@@ -40,11 +40,9 @@ describe('authors routes testing', () => {
     expect(results.body.name).toEqual('Alex Orlet');
   });
 
-  it.skip('DELETE /authors/:id should delete the author with the matching ID', async () => {
+  it('DELETE /authors/:id should delete the author with the matching ID', async () => {
     const DeletedAuthor = await request(app).delete('/authors/1');
-    expect(DeletedAuthor.body.name).toEqual(
-      'The Monster at the end of this author'
-    );
+    expect(DeletedAuthor.body.name).toEqual('Eric Hill');
     const results = await request(app).get('/authors/1');
     expect(results.status).toEqual(500);
   });
