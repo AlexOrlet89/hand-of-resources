@@ -45,7 +45,7 @@ describe('cats routes testing', () => {
     expect(results.body.type).toEqual('Tuxedo');
   });
 
-  it('DELETE /cats/:id should delete the cat with the matching ID', async () => {
+  it.skip('DELETE /cats/:id should delete the cat with the matching ID', async () => {
     const deletedCat = await request(app).delete('/cats/2');
     // console.log(results.body); returns garfield
     expect(deletedCat.body.name).toEqual('Garfield');
