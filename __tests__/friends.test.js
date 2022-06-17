@@ -8,7 +8,7 @@ describe('friends testing', () => {
     return setup(pool);
   });
 
-  it.skip('should return a list of friends', async () => {
+  it('should return a list of friends', async () => {
     const results = await request(app).get('/friends');
     expect(results.status).toEqual(200);
   });
