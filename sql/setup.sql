@@ -39,7 +39,8 @@ INSERT INTO authors (
 
 VALUES 
 ('Eric Hill', 'Holloway, London', 1927),
-('Jon Stone', 'New Haven, Connecticut', 1932);
+('Jon Stone', 'New Haven, Connecticut', 1932),
+('Stephen King', 'Bangor, Maine', 1958);
 
 
 create table friends (
