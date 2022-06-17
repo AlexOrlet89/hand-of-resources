@@ -28,6 +28,13 @@ describe('authors routes testing', () => {
     expect(results.body.name).toEqual('Eric Hill, PhD');
   });
 
+  it.skip('should insert a new author into our table', async () => {
+    const author = new { name: 'Alex Orlet', dob: 1989 }();
+    const results = await request(app).post('/authors/:id').send(author);
+    expect(results.status).toEqual(200);
+    expect(results.body.name).toEqual('Alex Orlet');
+  });
+
   afterAll(() => {
     pool.end();
   });
