@@ -29,7 +29,7 @@ describe('characters routes testing', () => {
     expect(results.body.first_name).toEqual('Moira');
   });
 
-  it('should insert a new character into our table', async () => {
+  it.skip('should insert a new character into our table', async () => {
     const character = new Character({
       first_name: 'Alex Orlet',
       last_name: 'Orlet Orlet',
@@ -37,6 +37,12 @@ describe('characters routes testing', () => {
     const results = await request(app).post('/characters/:id').send(character);
     expect(results.status).toEqual(200);
     expect(results.body.first_name).toEqual('Alex Orlet');
+  });
+  it('DELETE /characters/:id should delete the character with the matching ID', async () => {
+    const DeletedCharacter = await request(app).delete('/characters/1');
+    expect(DeletedCharacter.body.first_name).toEqual('Moira');
+    const results = await request(app).get('/characters/1');
+    expect(results.status).toEqual(500);
   });
 
   afterAll(() => {
