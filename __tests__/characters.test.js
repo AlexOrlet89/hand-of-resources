@@ -8,13 +8,13 @@ describe('characters routes testing', () => {
     return setup(pool);
   });
 
-  it.skip('should return a list of characters', async () => {
+  it('should return a list of characters', async () => {
     const results = await request(app).get('/characters');
     expect(results.status).toEqual(200);
-    expect(results.body.length).toEqual(4);
+    expect(results.body.length).toEqual(7);
   });
 
-  it.skip('should return a single character based on the id params', async () => {
+  it('should return a single character based on the id params', async () => {
     const results = await request(app).get('/characters/1');
     expect(results.body.first_name).toEqual('Moira');
   });
